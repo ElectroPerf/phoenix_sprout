@@ -1,0 +1,269 @@
+# This file will be installed as vendor/etc/init/hw/init.{ro.hardware}.rc
+import /vendor/etc/init/hw/init.qcom.rc
+
+# to override init.qcom.rc and init.target.rc
+import /vendor/etc/init/hw/init.lge.usb.rc
+import /vendor/etc/init/hw/init.lge.usb.configfs.rc
+import /vendor/etc/init/hw/init.lge.power.rc
+
+import /vendor/etc/init/hw/init.phoenix_sprout_vendor.rc
+import /init.lge.svelte.rc
+import /init.lge.log.rc
+
+# Start Wi-Fi Service
+import /vendor/etc/init/hw/init.wifi.rc
+# Start Wi-Fi Service for Helium
+import /vendor/etc/init/hw/init.wifi_ext.rc
+import /vendor/etc/init/init.wifi.runtime.rc
+
+# Fingerprints bring-up
+import /vendor/etc/init/hw/init.lge.fingerprints.rc
+# Sar_controller
+import /vendor/etc/init/hw/init.lge.sar_controller.rc
+
+on init
+    mkdir /mnt/vendor/mpt 0775 system system
+    mkdir /mnt/vendor/persist-lg 0771 system system
+    mkdir /mnt/vendor/sns 0755 system system
+    mkdir /mnt/vendor/power 0755 root root
+    mkdir /mnt/vendor/persist 0771 root system
+
+# BSP_Display Start
+on boot
+
+# Img Tune - M+
+    chown system system /sys/class/panel/img_tune/mplus_hd
+    chown system system /sys/class/panel/img_tune/mplus_max
+    chown system system /sys/class/panel/img_tune/mplus_mode
+
+# Img Tune - HDR
+    chown system system /sys/class/panel/img_tune/hdr_mode
+
+# aod area
+    chown system system /sys/class/panel/aod/area
+    write /sys/class/panel/aod/area "2 0 0 0 1470"
+
+# BSP_Display End
+
+on early-fs
+    ffu_update
+
+# BSP_Display Start
+on boot
+
+# Img Tune - M+
+    chown system system /sys/class/panel/img_tune/mplus_hd
+    chown system system /sys/class/panel/img_tune/mplus_max
+    chown system system /sys/class/panel/img_tune/mplus_mode
+
+# Img Tune - HDR
+    chown system system /sys/class/panel/img_tune/hdr_mode
+
+# aod area
+    chown system system /sys/class/panel/aod/area
+    write /sys/class/panel/aod/area "0 0 0 0 1470"
+
+# BSP_Display End
+
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+    mount_all /vendor/etc/fstab.${ro.hardware}
+
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+
+    restorecon_recursive /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/data 0700 system system
+
+    # Make folder for widevine DRM (lgdrm@lge.com)
+    mkdir /mnt/vendor/persist-lg/widevine 0770 drm system
+    mkdir /mnt/vendor/persist-lg/firmware 0771 system system
+
+    # Executing copy firmware (lgdrm@lge.com)
+    exec - system system -- /vendor/bin/cpfirmware widevine /mnt/vendor/persist-lg/firmware
+
+on post-fs
+    chown system system /mnt/vendor/mpt
+    chmod 0775 /mnt/vendor/mpt
+    restorecon_recursive /mnt/vendor/mpt
+
+    chown system system /mnt/vendor/persist-lg
+    chmod 0771 /mnt/vendor/persist-lg
+    restorecon_recursive /mnt/vendor/persist-lg
+
+    chown system system /mnt/vendor/sns
+    chmod 0755 /mnt/vendor/sns
+    restorecon_recursive /mnt/vendor/sns
+
+    chown root root /mnt/vendor/power
+    chmod 0755 /mnt/vendor/power
+    restorecon_recursive /mnt/vendor/power
+
+    mkdir /mnt/vendor/persist-lg/thermal 0770 root system
+
+# Support tuxera exfat filesystem
+    insmod /vendor/lib/modules/texfat.ko
+
+# QFUSE
+    write /sys/devices/platform/lge-qfprom/sec_read 0
+
+# enable & disable crash handler, rtb & trace event through property
+service vendor.service-crash /system/vendor/bin/init.msm8998.crash.sh
+    class main
+    disabled
+    oneshot
+
+on property:persist.vendor.lge.service.crash.enable=1
+    restart vendor.service-crash
+    # core setting
+    write /sys/module/msm_rtb/parameters/filter 55
+
+    # timer
+    write /sys/kernel/debug/tracing/events/timer/timer_expire_entry/enable 1
+    write /sys/kernel/debug/tracing/events/timer/timer_expire_exit/enable 1
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_cancel/enable 1
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_expire_entry/enable 1
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_expire_exit/enable 1
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_init/enable 1
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_start/enable 1
+
+    #enble FTRACE for softirq events
+    write /sys/kernel/debug/tracing/events/irq/enable 1
+
+    #enble FTRACE for Workqueue events
+    write /sys/kernel/debug/tracing/events/workqueue/enable 1
+
+    # schedular
+    write /sys/kernel/debug/tracing/events/sched/sched_cpu_hotplug/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_migrate_task/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_pi_setprio/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_switch/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_wakeup/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_wakeup_new/enable 1
+    write /sys/kernel/debug/tracing/events/sched/sched_isolate/enable 1
+
+    # sound - does not exist until post cs 2nd release
+#    write /sys/kernel/debug/tracing/events/asoc/snd_soc_reg_read/enable 1
+#    write /sys/kernel/debug/tracing/events/asoc/snd_soc_reg_write/enable 1
+
+    # mdp
+    write /sys/kernel/debug/tracing/events/mdss/mdp_video_underrun_done/enable 1
+
+    # video
+    write /sys/kernel/debug/tracing/events/msm_vidc/enable 1
+
+    # clock
+    write /sys/kernel/debug/tracing/events/power/clock_set_rate/enable 1
+    write /sys/kernel/debug/tracing/events/power/clock_enable/enable 1
+    write /sys/kernel/debug/tracing/events/power/clock_disable/enable 1
+
+    # regulator
+    write /sys/kernel/debug/tracing/events/regulator/enable 1
+
+    # power
+    write /sys/kernel/debug/tracing/events/msm_low_power/enable 1
+
+    #thermal
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_core_offline/enable 1
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_core_offline/enable 1
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_core_online/enable 1
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_core_online/enable 1
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_frequency_mit/enable 1
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_frequency_mit/enable 1
+
+    #rmph_send_msg - does not exist until post cs 2nd release
+#    write  /sys/kernel/debug/tracing/events/rpmh/rpmh_send_msg/enable 1
+
+    # size
+    write /sys/kernel/debug/tracing/buffer_size_kb 8192
+    write /sys/kernel/debug/tracing/tracing_on 1
+
+    ## enable_msm8998_osm_wdog_status_config
+    write /sys/kernel/debug/osm/pwrcl_clk/wdog_trace_enable 1
+    write /sys/kernel/debug/osm/perfcl_clk/wdog_trace_enable 1
+
+on property:persist.vendor.lge.service.crash.enable=0
+    restart vendor.service-crash
+
+    ## disable_trace_events
+    # core setting
+    write /sys/module/msm_rtb/parameters/filter 0
+    write /sys/kernel/debug/tracing/tracing_on 0
+
+    # timer
+    write /sys/kernel/debug/tracing/events/timer/timer_expire_entry/enable 0
+    write /sys/kernel/debug/tracing/events/timer/timer_expire_exit/enable 0
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_cancel/enable 0
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_expire_entry/enable 0
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_expire_exit/enable 0
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_init/enable 0
+    write /sys/kernel/debug/tracing/events/timer/hrtimer_start/enable 0
+
+    #enble FTRACE for softirq events
+    write /sys/kernel/debug/tracing/events/irq/enable 0
+
+    #enble FTRACE for Workqueue events
+    write /sys/kernel/debug/tracing/events/workqueue/enable 0
+
+    # schedular
+    write /sys/kernel/debug/tracing/events/sched/sched_cpu_hotplug/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_migrate_task/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_pi_setprio/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_switch/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_wakeup/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_wakeup_new/enable 0
+    write /sys/kernel/debug/tracing/events/sched/sched_isolate/enable 0
+
+    # sound - does not exist until post cs 2nd release
+#    write /sys/kernel/debug/tracing/events/asoc/snd_soc_reg_read/enable 0
+#    write /sys/kernel/debug/tracing/events/asoc/snd_soc_reg_write/enable 0
+
+    # mdp
+    write /sys/kernel/debug/tracing/events/mdss/mdp_video_underrun_done/enable 0
+
+    # video
+    write /sys/kernel/debug/tracing/events/msm_vidc/enable 0
+
+    # clock
+    write /sys/kernel/debug/tracing/events/power/clock_set_rate/enable 0
+    write /sys/kernel/debug/tracing/events/power/clock_enable/enable 0
+    write /sys/kernel/debug/tracing/events/power/clock_disable/enable 0
+
+    # regulator
+    write /sys/kernel/debug/tracing/events/regulator/enable 0
+
+    # power
+    write /sys/kernel/debug/tracing/events/msm_low_power/enable 0
+
+    #thermal
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_core_offline/enable 0
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_core_offline/enable 0
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_core_online/enable 0
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_core_online/enable 0
+    write /sys/kernel/debug/tracing/events/thermal/thermal_pre_frequency_mit/enable 0
+    write /sys/kernel/debug/tracing/events/thermal/thermal_post_frequency_mit/enable 0
+
+    #rmph_send_msg - does not exist until post cs 2nd release
+#    write  /sys/kernel/debug/tracing/events/rpmh/rpmh_send_msg/enable 1
+
+    # size
+    write /sys/kernel/debug/tracing/buffer_size_kb 0
+    # free buffer
+    write /sys/kernel/debug/tracing/free_buffer 0
+    write /sys/kernel/debug/tracing/tracing_on 0
+
+    ## disable_msm8998_osm_wdog_status_config
+    write /sys/kernel/debug/osm/pwrcl_clk/wdog_trace_enable 0
+    write /sys/kernel/debug/osm/perfcl_clk/wdog_trace_enable 0
+
+on post-fs-data
+# NFC: create data/nfc for nv storage
+    mkdir /data/vendor/nfc 0770 nfc nfc
+
+  #sensor - make directory for sns.reg used by sensordaemon
+    mkdir /mnt/vendor/sns/cal/ 0755 system system
+    chown system system /mnt/vendor/sns/cal/sns.reg
+    chown system system /mnt/vendor/sns/cal/cal_data.txt
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+This XML file declares which platform apps that need to access internal APIs.
+e.g.:
+    <hidden-api-whitelisted-app package="com.lge.foobar" />
+-->
+<config>
+
+    <hidden-api-whitelisted-app package="com.felicanetworks.mfc" />
+    <hidden-api-whitelisted-app package="com.felicanetworks.mfm" />
+    <hidden-api-whitelisted-app package="com.felicanetworks.mfs" />
+    <hidden-api-whitelisted-app package="com.felicanetworks.mfw.a.main" />
+    <hidden-api-whitelisted-app package="com.felicanetworks.mfw.a.boot" />
+    <hidden-api-whitelisted-app package="com.felicanetworks.mfm.main" />
+    <hidden-api-whitelisted-app package="jp.softbank.mb.flcrlap" />
+    <hidden-api-whitelisted-app package="jp.softbank.mb.cbrl" />
+    <hidden-api-whitelisted-app package="jp.co.yahoo.android.ymobilemenuapp" />
+    <hidden-api-whitelisted-app package="jp.softbank.mb.parentalcontrols" />
+    <hidden-api-whitelisted-app package="jp.co.yahoo.android.ymsetupcore" />
+    <hidden-api-whitelisted-app package="jp.co.yahoo.android.ymsetupman" />
+    <hidden-api-whitelisted-app package="jp.co.yahoo.android.ymobile.mail" />
+    <hidden-api-whitelisted-app package="com.android.providers.partnerbookmarks" />
+    <hidden-api-whitelisted-app package="com.qualcomm.qti.qms.service.connectionsecurity" />
+    <hidden-api-whitelisted-app package="com.android.settings.intelligence" />
+    <hidden-api-whitelisted-app package="com.android.wallpaperpicker" />
+
+</config>

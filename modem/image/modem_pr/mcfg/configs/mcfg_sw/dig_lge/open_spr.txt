@@ -1,0 +1,8 @@
+mcfg_sw/generic_/joan_nao/na/att/att/mcfg_sw.mbn
+mcfg_sw/generic_/joan_nao/na/uscc/usc/mcfg_sw.mbn
+mcfg_sw/generic_/joan_nao/na/tmo/tmo/mcfg_sw.mbn
+mcfg_sw/generic_/joan_nao/na/verizon_/hvolte_o/mcfg_sw.mbn
+mcfg_sw/generic_/joan_nao/na/cca/cca/mcfg_sw.mbn
+mcfg_sw/generic_/joan_nao/na/lra/lra/mcfg_sw.mbn
+mcfg_sw/generic_/joan_nao/na/sprint/commerci/mcfg_sw.mbn
+mcfg_sw/generic_/joan_nao/common/row/row_usc/mcfg_sw.mbn

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is the LGE IMS features. -->
+<permissions>
+    <feature name="com.lge.ims.volte" />
+    <feature name="com.lge.ims.vt" />
+    <feature name="com.lge.ims.media.evs" />
+</permissions>

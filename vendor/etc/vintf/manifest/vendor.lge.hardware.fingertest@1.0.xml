@@ -1,0 +1,8 @@
+<manifest version="1.0" type="device">
+    <!-- LGE FingerTest HAL service -->
+    <hal format="hidl">
+        <name>vendor.lge.hardware.fingertest</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IFingerTest/default</fqname>
+    </hal>
+</manifest>

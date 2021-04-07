@@ -1,0 +1,2 @@
+mcfg_sw/generic_/phoenix_/global/row/row_glob/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/testlab/testlab/mcfg_sw.mbn

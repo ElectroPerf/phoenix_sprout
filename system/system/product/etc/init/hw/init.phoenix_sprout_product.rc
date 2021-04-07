@@ -1,0 +1,8 @@
+# phoenix_sprout_product init rc
+
+# [PAI] Preloading apps start
+on zygote-start
+    mkdir /data/preloads 0775 system system
+    mkdir /data/preloads/media 0775 system system
+    mkdir /data/preloads/demo 0775 system system
+# [PAI] Preloading apps end

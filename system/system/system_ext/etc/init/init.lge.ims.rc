@@ -1,0 +1,11 @@
+# LG IMS - IPSec {
+service product.imsipsecclient /system_ext/bin/imsipsecclient
+    class main
+    group system net_admin net_raw
+    disabled
+
+service product.imsipsecstarter /system_ext/bin/imsipsecstarter
+    class main
+    user system
+    group system net_admin net_raw
+# LG IMS - IPSec }

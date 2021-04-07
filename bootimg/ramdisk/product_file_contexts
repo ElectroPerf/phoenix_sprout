@@ -1,0 +1,1 @@
+/(product|system/product)/bin/qspmsvc           u:object_r:vendor_qspmsvc_exec:s0

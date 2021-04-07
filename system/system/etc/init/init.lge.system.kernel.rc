@@ -1,0 +1,28 @@
+on post-fs-data
+    mkdir /data/ramoops 0755 root log
+
+# LGE ramoops backup function service
+#service ramoops_backup /system/bin/ramoops_backup.sh
+#    class main
+#    user root
+#    disabled
+#    oneshot
+
+# LGE time_in_stae function service
+service time_in_state /system/bin/init.time_in_state.sh
+    class main
+    user root
+    disabled
+    oneshot
+
+# LGE pstore backup function service
+service pstore_backup /system/bin/pstore_backup.sh
+    class main
+    user root
+    disabled
+    oneshot
+
+on property:init.svc.bootanim=stopped
+    start time_in_state
+#   start ramoops_backup
+    start pstore_backup

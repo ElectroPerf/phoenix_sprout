@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+
+<permissions>
+
+    <!-- Whitelist of LG services that are currently exempted
+         from O+ background service restriction. -->
+    <allow-lg-bg-service package="com.lge.camera" />
+
+    <!-- LGU -->
+    <allow-lg-bg-service package="com.lguplus.lgugpsnwps" />
+
+</permissions>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<config>
+    <!-- These are call components that need to freely run in the background -->
+    <allow-in-power-save package="com.lge.ims" />
+    <allow-in-power-save package="com.lge.imsvt" />
+
+    <allow-in-data-usage-save package="com.lge.ims" />
+</config>

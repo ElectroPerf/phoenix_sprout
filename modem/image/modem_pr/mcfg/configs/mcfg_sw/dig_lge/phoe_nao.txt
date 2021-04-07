@@ -1,0 +1,9 @@
+mcfg_sw/generic_/phoenix_/na/acg/acg/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/att/att/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/cca/cca/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/sprint/commerci/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/tmo/tmo/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/uscc/usc/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/verizon_/hvolte_o/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/testlab/testlab/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/common/row/row/mcfg_sw.mbn

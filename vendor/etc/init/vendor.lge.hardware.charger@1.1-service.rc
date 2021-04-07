@@ -1,0 +1,4 @@
+service vendor.lge-charger-hal-1-1 /vendor/bin/hw/vendor.lge.hardware.charger@1.1-service
+    class hal
+    user system
+    group system

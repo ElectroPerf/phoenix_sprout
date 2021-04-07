@@ -1,0 +1,4 @@
+service vendor.lge-lgmd-hal-1-0 /vendor/bin/hw/vendor.lge.hardware.lgmd@1.0-service
+    class hal
+    user root
+    group root system

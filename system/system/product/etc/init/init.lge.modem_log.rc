@@ -1,0 +1,232 @@
+# Copyright (c) 2011, Code Aurora Forum. All rights reserved.
+# Copyright (c) 2011-2012, LG Electronics Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of Code Aurora nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+####################################
+#                                  #
+#        Register service          #
+#                                  #
+####################################
+service lgssl_odm /product/bin/lg_dm_router --odm
+    class late_start
+    user system
+    group system sdcard_r sdcard_rw everybody diag
+    disabled
+    oneshot
+
+service lgssl_odm_k /product/bin/lg_dm_router --odm --kill --cmdline=44
+    user system
+    group system sdcard_r sdcard_rw everybody
+    disabled
+    oneshot
+
+service lgssl_odm_s /product/bin/lg_dm_router --odm --cmdline=0
+    user system
+    group system sdcard_r sdcard_rw everybody
+    disabled
+    oneshot
+
+service lgssl_odm_t /product/bin/lg_dm_router --odm --cmdline=1
+    user system
+    group system sdcard_r sdcard_rw everybody
+    disabled
+    oneshot
+
+service lgssl_odm_c /product/bin/lg_dm_router --odm --cmdline=2
+    user system
+    group system sdcard_r sdcard_rw everybody
+    disabled
+    oneshot
+
+service lgssl_odm_g /product/bin/lg_dm_router --odm --cmdline=10
+    user system
+    group system sdcard_r sdcard_rw everybody
+    disabled
+    oneshot
+
+service lgssl_odm_de /product/bin/lg_dm_router --odm --cmdline=100
+    user system
+    group system sdcard_r sdcard_rw everybody
+    disabled
+    oneshot
+
+service lgssl_odm_dd /product/bin/lg_dm_router --odm --cmdline=101
+    user system
+    group system sdcard_r sdcard_rw everybody
+    disabled
+    oneshot
+
+#    group system sdcard_r sdcard_rw everybody media_rw net_raw net_admin inet diag readproc
+
+
+service lgssl_sdm /product/bin/lg_dm_router --sdm
+    class late_start
+    user system
+    group system sdcard_r sdcard_rw everybody diag
+    disabled
+    socket Full.DM.port stream 660 system system
+    oneshot
+
+service lgssl_sdm_k /product/bin/lg_dm_router --sdm --kill --cmdline=44
+    user system
+    group system sdcard_r sdcard_rw everybody
+    disabled
+    oneshot
+
+service lgssl_sdm_de /product/bin/lg_dm_router --sdm --cmdline=100
+    user system
+    group system sdcard_r sdcard_rw everybody
+    disabled
+    oneshot
+
+service lgssl_sdm_dd /product/bin/lg_dm_router --sdm --cmdline=101
+    user system
+    group system sdcard_r sdcard_rw everybody
+    disabled
+    oneshot
+
+
+####################################
+#                                  #
+#    Register property service     #
+#                                  #
+####################################
+# First kill command
+on property:persist.product.lge.service.odm_log.enable=false
+    start lgssl_odm_k
+
+on property:persist.product.lge.service.dm_app.enable=false
+    start lgssl_sdm_k
+
+
+
+# ODM
+on property:persist.product.lge.service.odm_log.enable=true
+    start lgssl_odm
+
+# Enabled debug log
+on property:product.lge.debug.odm_log.enable=true
+    start lgssl_odm_de
+
+on property:product.lge.debug.odm_log.enable=false
+    start lgssl_odm_dd
+
+# ODM ctrl
+on property:product.lge.debug.odm_log.tx_mode=stream
+    start lgssl_odm_s
+
+on property:product.lge.debug.odm_log.tx_mode=threshold
+    start lgssl_odm_t
+
+on property:product.lge.debug.odm_log.tx_mode=circular
+    start lgssl_odm_c
+
+on property:product.lge.debug.odm_log.get_data=*
+    start lgssl_odm_g
+
+
+# SDM
+on property:persist.product.lge.service.dm_app.enable=true
+    start lgssl_sdm
+
+on property:product.lge.debug.sdm_log.enable=true
+    start lgssl_sdm_de
+
+on property:product.lge.debug.sdm_log.enable=false
+    start lgssl_sdm_dd
+
+
+# Modem debug info
+service modem_debug_info /product/bin/modem_debug_info.sh
+    class late_start
+    user system
+    group system
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start modem_debug_info
+
+
+# LGE_S /* FEATURE_LGE_COLLECT_RAMDUMP */
+on post-fs-data
+    # LGE to copy ramdump
+    mkdir /data/lge_modem_ramdump_loc 0775 system system
+    mkdir /data/vendor/lge_modem_ramdump_loc 0775 system system
+    mkdir /data/vendor/lge_ssrdump 0775 system system
+    mkdir /data/vendor/lge_ssrdump/dumps 0775 system system
+
+service ssrdump_noti /product/bin/ssrdump_noti.sh
+    user system
+    group system
+    disabled
+    oneshot
+
+service esoc_ssrdump_noti /product/bin/esoc_ssrdump_noti.sh
+    user system
+    group system
+    disabled
+    oneshot
+
+on property:persist.product.lge.moca.enable_ramdumps=0
+    setprop persist.vendor.ssr.enable_ramdumps 0
+
+on property:persist.product.lge.moca.enable_ramdumps=1
+    setprop persist.vendor.ssr.enable_ramdumps 1
+
+on cp-ssr-dump
+    chmod 0777 /data/lge_modem_ramdump_loc
+    exec /system/bin/rm -r /data/lge_modem_ramdump_loc
+    mkdir /data/lge_modem_ramdump_loc 0777 system system
+    chmod 0444 /data/vendor/lge_ssrdump/lgedump.tar.gz
+    chmod 0444 /data/vendor/lge_ssrdump/lgedump_esoc.tar
+    copy /data/vendor/lge_ssrdump/lgedump.tar.gz /data/lge_modem_ramdump_loc/lgedump${persist.vendor.ssr.date}.tar.gz
+    copy /data/vendor/lge_ssrdump/lgedump_esoc.tar /data/lge_modem_ramdump_loc/lgedump_esoc${persist.vendor.ssr.esoc_date}.tar
+    chmod 0644 /data/lge_modem_ramdump_loc/lgedump${persist.vendor.ssr.date}.tar.gz
+    chmod 0644 /data/lge_modem_ramdump_loc/lgedump_esoc${persist.vendor.ssr.esoc_date}.tar
+    copy /data/vendor/tombstones/SDX50M/ssr_esoc_history.txt /data/logger/ssr_esoc_history.txt
+    copy /data/vendor/tombstones/SDX50M/ssr_esoc_history.txt /data/lge_modem_ramdump_loc/ssr_esoc_history.txt
+    chmod 0444 /data/vendor/lge_modem_ramdump_loc/ssr_history.txt
+    copy /data/vendor/lge_modem_ramdump_loc/ssr_history.txt /data/logger/ssr_history.txt
+    copy /data/vendor/lge_modem_ramdump_loc/ssr_history.txt /data/lge_modem_ramdump_loc/ssr_history.txt
+    chmod 0666 /data/vendor/lge_modem_ramdump_loc/ssr_history.txt
+    chmod 0444 /data/logger/ssr_esoc_history.txt
+    chmod 0444 /data/lge_modem_ramdump_loc/ssr_esoc_history.txt
+    chmod 0444 /data/logger/ssr_history.txt
+    chmod 0444 /data/lge_modem_ramdump_loc/ssr_history.txt
+
+on property:persist.vendor.ssr.cnt=*
+    trigger cp-ssr-dump
+    start ssrdump_noti
+
+on property:persist.vendor.ssr.esoc_cnt=*
+    trigger cp-ssr-dump
+    start esoc_ssrdump_noti
+
+# LGE_E /* FEATURE_LGE_COLLECT_RAMDUMP */
+
+

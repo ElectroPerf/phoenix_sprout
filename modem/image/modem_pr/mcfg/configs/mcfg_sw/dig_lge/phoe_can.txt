@@ -1,0 +1,9 @@
+mcfg_sw/generic_/phoenix_/na/bell/bell/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/est/est/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/rgs/rgs/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/tls/tls/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/vtr/vtr/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/wind/wind/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/testlab/testlab/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/common/row/row/mcfg_sw.mbn
+mcfg_sw/generic_/phoenix_/na/testbed/testbed/mcfg_sw.mbn

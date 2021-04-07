@@ -1,0 +1,8 @@
+<manifest version="1.0" type="device">
+    <!-- LGE SensorTest HAL service -->
+    <hal format="hidl">
+        <name>vendor.lge.hardware.sensortest</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::ISensorTest/default</fqname>
+    </hal>
+</manifest>

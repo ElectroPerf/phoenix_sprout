@@ -1,0 +1,4 @@
+service vendor.lge-property-hal-2-0 /vendor/bin/hw/vendor.lge.hardware.property@2.0-service
+    class hal
+    user system
+    group system

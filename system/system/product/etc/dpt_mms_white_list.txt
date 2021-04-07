@@ -1,0 +1,156 @@
+310420 // CBW USA, out of business informed by NVNO TAM(Jun Young Park <jjune.park@lge.com>) via email on 2019-01-25
+37004 // Viva Movil has no mms profile in operator spec.
+35805 // Digicel SCA LATIN AMERICA, Operator didn't support MMS service
+37001 // Altice SCA LATIN AMERICA, Operator didn't support MMS service
+70403 // Telefonica Guatemala SCA LATIN AMERICA, Operator didn't support MMS service
+70604 // Telefonica El Salvador SCA LATIN AMERICA, Operator didn't support MMS service
+71030 // Telefonica Nicaragua SCA LATIN AMERICA, Operator didn't support MMS service
+71201 // ICE Costa Rica SCA LATIN AMERICA, Operator didn't support MMS service
+71202 // ICE Costa Rica SCA LATIN AMERICA, Operator didn't support MMS service
+71204 // Telefonica Costa Rica SCA LATIN AMERICA, Operator didn't support MMS service
+71220 // Fullmovil Costa Rica SCA LATIN AMERICA, Operator didn't support MMS service
+71402 // Telefonica Movistar Panama SCA LATIN AMERICA, Operator didn't support MMS service
+71606 // TELEFONICA Peru SCA LATIN AMERICA, Operator didn't support MMS service
+71617 // ENTEL Peru SCA LATIN AMERICA, Operator didn't support MMS service
+72417imsi724170012xxxxxx // Magazine Luiza Brazil SCA LATIN AMERICA, Operator didn't support MMS service
+72417 // Correios Brazil SCA LATIN AMERICA, Operator didn't support MMS service
+72432 // Algar Telecom Brazil SCA LATIN AMERICA, Operator didn't support MMS service
+72433 // Algar Telecom Brazil SCA LATIN AMERICA, Operator didn't support MMS service
+72434 // Algar Telecom Brazil SCA LATIN AMERICA, Operator didn't support MMS service
+72454 // Porto Conecta SCA LATIN AMERICA, Operator didn't support MMS service
+73001 // Entel Chile SCA LATIN AMERICA, Operator didn't support MMS service
+73002 // Telefonica Chile SCA LATIN AMERICA, Operator didn't support MMS service
+73008 // VTR Chile SCA LATIN AMERICA, Operator didn't support MMS service
+73009 // Telefonica Chile SCA LATIN AMERICA, Operator didn't support MMS service
+73010 // Entel Chile SCA LATIN AMERICA, Operator didn't support MMS service
+74002 // Corporacion Nacional De Telecomunicaciones Ecuador SCA LATIN AMERICA, Operator didn't support MMS service
+334020imsi33402003xxxxxxx // OUI Mexico SCA LATIN AMERICA, Operator didn't support MMS service
+372010 // DIGICEL Haiti SCA LATIN AMERICA, Operator didn't support MMS service
+704030 // Telefonica Guatemala SCA LATIN AMERICA, Operator didn't support MMS service
+706040 // Telefonica El Salvador SCA LATIN AMERICA, Operator didn't support MMS service
+710300 // Telefonica Nicaragua SCA LATIN AMERICA, Operator didn't support MMS service
+714020 // Telefonica Movistar Panama SCA LATIN AMERICA, Operator didn't support MMS service
+732130 // Avantel Colombia SCA LATIN AMERICA, Operator didn't support MMS service
+732187 // ETB Colombia SCA LATIN AMERICA, Operator didn't support MMS service
+25006 // DANYCOM CIS CIS, Operator didn't support MMS service
+25032 // WIN-Mobile CIS CIS, Operator didn't support MMS service
+25042spnAIVA //AIVA CIS CIS, Operator didn't support MMS service
+25042spnMCN // MCN CIS CIS, Operator didn't support MMS service
+25050 // Sberbank CIS CIS, Operator didn't support MMS service
+25062 // Tinkoff CIS CIS, Operator didn't support MMS service
+40107 // ALTEL CIS CIS, Operator didn't support MMS service
+42801 // SKYtel CIS CIS, Operator didn't support MMS service
+42806 // G-Mobile Mongolia CIS CIS, Operator didn't support MMS service
+42888 // Unitel Mongolia CIS CIS, Operator didn't support MMS service
+42891 // Skytel Mongolia CIS CIS, Operator didn't support MMS service
+42898 // G-Mobile Mongolia CIS CIS, Operator didn't support MMS service
+42899 // Mobicom Mongolia CIS CIS, Operator didn't support MMS service
+43408 // Uzmobile Uzbekistan CIS CIS, Operator didn't support MMS service
+43709 // O Kyrgyzstan CIS CIS, Operator didn't support MMS service
+20404spn中国电信 // CT China CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+41308 // Hutch SGP CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+45407 // Unicom Hk Hong Kong Special Administrative Region of China HKG CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+46605 // Asia Pacific Telecom Taiwan TWN CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+50212 // Maxis Malaysia SGP CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+50213 // Cellcom Malaysia SGP CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+50217 // Maxis Malaysia SGP CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+50218 // Umobile Malaysia SGP CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+50219 // Cellcom Malaysia SGP CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+52505imsi525053095xxxxxx // Asia Pacific Telecom Taiwan TWN CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+52505gid0A // Asia Pacific Telecom Taiwan TWN CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+52505imsi525053096xxxxxx // Asia Pacific Telecom Taiwan TWN CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+502142 // Maxis Malaysia SGP CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+502145 // Cellcom Malaysia SGP CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+502147 // Maxis Malaysia SGP CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+502148 // Cellcom Malaysia SGP CHINA & SOUTHEAST ASIA, Operator didn't support MMS service
+44010 // Ntt Docomo Japan JAPAN, Operator didn't support MMS service
+44051imsi4405130xxxxxxxx // Jupiter Telecommunications Co. Ltd Japan Japan JAPAN, Operator didn't support MMS service
+44051imsi4405131xxxxxxxx // Jupiter Telecommunications Co. Ltd Japan Japan JAPAN, Operator didn't support MMS service
+20403 // LTE MVNOs Netherlands EU EUROPE, Operator didn't support MMS service
+20404 // VODAFONE Netherlands EU EUROPE, Operator didn't support MMS service
+20404imsi2040479136xxxxx // HollandsNieuwe Netherlands EU EUROPE, Operator didn't support MMS service
+20404imsi2040479137xxxxx // HollandsNieuwe Netherlands EU EUROPE, Operator didn't support MMS service
+20404imsi2040479108xxxxx // HollandsNieuwe Netherlands EU EUROPE, Operator didn't support MMS service
+20404imsi2040479105xxxxx // HollandsNieuwe Netherlands EU EUROPE, Operator didn't support MMS service
+20404imsi2040479109xxxxx // HollandsNieuwe Netherlands EU EUROPE, Operator didn't support MMS service
+20404imsi2040479106xxxxx // HollandsNieuwe Netherlands EU EUROPE, Operator didn't support MMS service
+20404imsi2040479107xxxxx // HollandsNieuwe Netherlands EU EUROPE, Operator didn't support MMS service
+20404imsi2040479135xxxxx // HollandsNieuwe Netherlands EU EUROPE, Operator didn't support MMS service
+20408imsi204080950xxxxxx // LTE MVNOs Netherlands EU EUROPE, Operator didn't support MMS service
+20408 // KPN Netherlands EU EUROPE, Operator didn't support MMS service
+20412 // TELFORT Netherlands EU EUROPE, Operator didn't support MMS service
+20416 // DTAG NL EU EUROPE, Operator didn't support MMS service
+20416spnBen NL // BEN NL EU EUROPE, Operator didn't support MMS service
+20420 // DTAG NL EU EUROPE, Operator didn't support MMS service
+20469 // KPN Netherlands EU EUROPE, Operator didn't support MMS service
+20601gid75617431 // UPC Cablecom Austria EU EUROPE, Operator didn't support MMS service
+21404imsi214045xxxxxxxxx //YOIGO Spain EU EUROPE, Operator didn't support MMS service
+21404 //YOIGO Spain EU EUROPE, Operator didn't support MMS service
+21603 // Digi Hungary EU EUROPE, Operator didn't support MMS service
+22210gid20 // ho mobile Italy EU EUROPE, Operator didn't support MMS service
+22210spnho. // ho mobile Italy EU EUROPE, Operator didn't support MMS service
+23103 // Swan Slovakia EU EUROPE, Operator didn't support MMS service
+23212 // Yesss Austria EU EUROPE, Operator didn't support MMS service
+23213gid75617431 //UPC Cablecom Austria EU EUROPE, Operator didn't support MMS service
+26012spnCyfrowy Polsat //PLUS Poland EU EUROPE, Operator didn't support MMS service
+27001 // POST Luxembourg EU EUROPE, Operator didn't support MMS service
+28010 // Mtn Cyprus EU EUROPE, Operator didn't support MMS service
+28411 //Bulsatcom Bulgaria EU EUROPE, Operator didn't support MMS service
+28413 // Max Bulgaria EU EUROPE, Operator didn't support MMS service
+41401 // mptnet ESA ASIA & MIDDLE EAST & AFRICA, For Myanmar not person in charge take care about MC biz.
+42005spnVirgin Mobile //Virgin Mobile Saudi Arabia MEA ASIA & MIDDLE EAST & AFRICA, Regarding UAE & KSA, APN’s are related to virtual NW and we don’t have additional scope to cover it, it will take extra time to review market SIM & functionality status.
+42005spnFRiENDi mobile // Virgin Mobile Saudi Arabia MEA ASIA & MIDDLE EAST & AFRICA, Regarding UAE & KSA, APN’s are related to virtual NW and we don’t have additional scope to cover it, it will take extra time to review market SIM & functionality status.
+42403imsi424030221xxxxxx // Virgin Mobile United Arab Emirates MEA ASIA & MIDDLE EAST & AFRICA, Regarding UAE & KSA, APN’s are related to virtual NW and we don’t have additional scope to cover it, it will take extra time to review market SIM & functionality status.
+42519 // 019Mobile Israel ISR ASIA & MIDDLE EAST & AFRICA, 019 Mobile APN is per GPRI. If you face any mismatch please register it in TD. Confirmed that MMS functionality is not needed.
+43232 // Taliya Iran, MEA, Operator didn't support MMS service
+51009 // Smartfren Indonesia ESA ASIA & MIDDLE EAST & AFRICA, Operator not support GSM/ WCDMA. MMS feature works via IMS
+51028 // Smartfren Indonesia ESA ASIA & MIDDLE EAST & AFRICA, Operator not support GSM/ WCDMA. MMS feature works via IMS
+51502 // Globe Philippines ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+60803 // EXPRESSO Senegal EOS ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+62003 // Tigo Ghana MEA ASIA & MIDDLE EAST & AFRICA, We no longer distributing stock to Madagascar and we do not have any contact to assist in getting the APN information for GPRI. We have to remove these buyers on GPRI.
+62140 // Natcom Nigeria NAN ASIA & MIDDLE EAST & AFRICA, For Nigeria & Congo, MC biz on hold from 2015 and we don’t have FTE there, So better to skip it now.
+63001 // VODACOME Democratic Republic of the Congo VCC ASIA & MIDDLE EAST & AFRICA, We no longer distributing stock to Madagascar and we do not have any contact to assist in getting the APN information for GPRI. We have to remove these buyers on GPRI.
+63002 // Airtel Democratic Republic of the Congo ARC ASIA & MIDDLE EAST & AFRICA, For Nigeria & Congo, MC biz on hold from 2015 and we don’t have FTE there, So better to skip it now.
+64601 // Airtel Madagascar ZAF ASIA & MIDDLE EAST & AFRICA, We no longer distributing stock to Madagascar and we do not have any contact to assist in getting the APN information for GPRI. We have to remove these buyers on GPRI.
+64602 // Orange Madagascar ZAF ASIA & MIDDLE EAST & AFRICA, We no longer distributing stock to Madagascar and we do not have any contact to assist in getting the APN information for GPRI. We have to remove these buyers on GPRI.
+64604 // Telma Madagascar ZAF ASIA & MIDDLE EAST & AFRICA, We no longer distributing stock to Madagascar and we do not have any contact to assist in getting the APN information for GPRI. We have to remove these buyers on GPRI.
+405840 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405854 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405855 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405856 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405857 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405858 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405859 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405860 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405861 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405862 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405863 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405864 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405865 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405866 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405867 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405868 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405869 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405870 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405871 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405872 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405873 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+405874 // Reliance Jio India ESA ASIA & MIDDLE EAST & AFRICA, Operator didn't support MMS service
+310140 // GTA USA
+310420 // CBW USA
+310470 // Ntelos USA
+310710 // ASTAC USA
+311740 // TelAlaska USA
+311930 // Syringa Wireless USA
+42526 // Annatel
+71403 // Claro
+70601 // Claro
+71021 // Claro
+712030 // Claro
+71203 // Claro
+70401 // Claro
+70800 // Claro
+708001 // Claro
+710730 // Claro
+71073 // Claro
+350000 // Unknown

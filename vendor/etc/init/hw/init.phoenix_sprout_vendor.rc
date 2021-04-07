@@ -1,0 +1,13 @@
+# phoenix_sprout_vendor init rc
+
+on post-fs-data
+#Create factory for key attestation provisoning
+    mkdir /data/vendor/km 0770 system system
+
+# IMEI_Protection start
+# Add ipd service
+service vendor.ipd /vendor/bin/ipd
+    class main
+    user system
+    group radio system net_raw
+# IMEI_Protection end

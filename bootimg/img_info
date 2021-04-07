@@ -1,0 +1,12 @@
+kernel=kernel
+ramdisk=ramdisk
+page_size=4096
+kernel_size=17215516
+ramdisk_size=11733557
+base_addr=0x00000000
+kernel_offset=0x00008000
+ramdisk_offset=0x01000000
+tags_offset=0x00000100
+cmd_line='console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3 loop.max_part=7 androidboot.hardware=phoenix_sprout buildvariant=user veritykeyid=id:fcf7124e6d902096c6d3be1f67d0e8b1defacfd9'
+board=""
+format=gzip

@@ -1,0 +1,16 @@
+# This file will be installed as product/etc/init/hw/init.{ro.hardware}.rc
+import /product/etc/init/hw/init.phoenix_sprout_product.rc
+import /init.lge.modem_log.rc
+
+on init
+    mkdir /mnt/product/els 0755 system system
+    mkdir /mnt/product/persist-lg 0771 system system
+
+on post-fs
+    chown system system /mnt/product/els
+    chmod 0755 /mnt/product/els
+    restorecon_recursive /mnt/product/els
+
+    chown system system /mnt/product/persist-lg
+    chmod 0771 /mnt/product/persist-lg
+    restorecon_recursive /mnt/product/persist-lg

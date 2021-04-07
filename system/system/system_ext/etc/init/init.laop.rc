@@ -1,0 +1,37 @@
+#LAOP
+on post-fs
+    mkdir /mnt/vendor/persist-lg/laop 0771 system radio
+    mkdir /mnt/vendor/persist-lg/laop/property 0771 system radio
+
+on post-fs-data
+    mkdir /data/laop
+    mkdir /data/laop/etc
+    chmod 0775 /data/laop
+    chmod 0775 /data/laop/etc
+    chown system system /data/laop
+    chown system system /data/laop/etc
+    restorecon_recursive /data/laop
+
+#Customize booting resources
+on property:vold.decrypt=trigger_load_persist_props
+    copy /mnt/vendor/persist-lg/ntcode_list /data/local/ntcode_list
+    chmod 0644 /data/local/ntcode_list
+
+on property:ro.crypto.type=file && property:ro.persistent_properties.ready=true
+    copy /mnt/vendor/persist-lg/ntcode_list /data/local/ntcode_list
+    chmod 0644 /data/local/ntcode_list
+
+
+#Load laop props(perm.prop)
+on property:persist.vendor.lge.clientid-changed=fast
+    load_custom_props --perm-prop
+    setprop persist.vendor.lge.clientid-changed fast_done
+
+on property:persist.vendor.lge.clientid-changed=late
+    load_custom_props --perm-prop
+    setprop persist.vendor.lge.clientid-changed late_done
+
+on property:persist.vendor.lge.clientid-changed=ntcode
+    load_custom_props --perm-prop
+    setprop persist.vendor.lge.clientid-changed ntcode_done
+

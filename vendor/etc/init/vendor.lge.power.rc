@@ -1,0 +1,326 @@
+# Copyright (c) 2017, LG Eletronics. All rights reserved.
+#
+
+# setting owner
+on boot
+   chown system system /sys/devices/platform/lge-unified-nodes/thermald_iusb
+   chown system system /sys/devices/platform/lge-unified-nodes/thermald_ibat
+   chown system system /sys/devices/platform/lge-unified-nodes/thermald_idc
+   chown system system /sys/devices/platform/lge-unified-nodes/charging_restriction
+   chown system system /sys/devices/platform/lge-unified-nodes/charging_enable
+   chown system system /sys/devices/platform/lge-unified-nodes/charging_step
+   chown system system /sys/devices/platform/lge-unified-nodes/charging_showcase
+   chown system system /sys/devices/platform/lge-unified-nodes/charging_completed
+   chown system system /sys/devices/platform/lge-unified-nodes/fake_battery
+   chown system system /sys/devices/platform/lge-unified-nodes/fake_sdpmax
+   chown system system /sys/devices/platform/lge-unified-nodes/fake_hvdcp
+   chown system system /sys/devices/platform/lge-unified-nodes/battery_age
+   chown system system /sys/devices/platform/lge-unified-nodes/battery_condition
+   chown system system /sys/devices/platform/lge-unified-nodes/battery_valid
+   chown system system /sys/devices/platform/lge-unified-nodes/charger_name
+   chown system system /sys/devices/platform/lge-unified-nodes/charger_highspeed
+   chown system system /sys/devices/platform/lge-unified-nodes/charger_incompatible
+   chown system system /sys/devices/platform/lge-unified-nodes/charger_usbid
+   chown system system /sys/devices/platform/lge-unified-nodes/charger_verbose
+   chown system system /sys/devices/platform/lge-unified-nodes/support_fastpl
+   chown system system /sys/devices/platform/lge-unified-nodes/support_fastchg
+   chmod 644 /data/logger/qni_log
+   chmod 644 /vendor/power/qna_log
+   chmod 644 /vendor/power/qni_a_data
+   chmod 644 /vendor/power/qni_b_data
+
+# emotional led
+on boot
+   chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/blink_patterns
+   chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/blink_patterns
+   chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/input_patterns
+   chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/input_patterns
+   chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/onoff_patterns
+   chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/onoff_patterns
+   chown system system /sys/devices/virtual/lg_rgb_led/use_patterns/setting
+   chmod 0644 /sys/devices/virtual/lg_rgb_led/use_patterns/setting
+   write /sys/devices/virtual/lg_rgb_led/use_patterns/setting 1
+
+# battery fake mode
+on property:persist.vendor.lge.service.fakebatt=1
+   write /sys/class/lge_power/pseudo_battery/pseudo_batt 1
+on property:persist.vendor.lge.service.fakebatt=0
+   write /sys/class/lge_power/pseudo_battery/pseudo_batt 0
+
+# usb current max mode property
+on property:persist.vendor.lge.service.usbcurrentmax=1
+   write /sys/class/lge_power/lge_cable_detect/usb_current_max_mode 1
+on property:persist.vendor.lge.service.usbcurrentmax=0
+   write /sys/class/lge_power/lge_cable_detect/usb_current_max_mode 0
+
+# hvdcp fake mode
+on property:persist.vendor.lge.service.hvdcpfakemode=1
+   write /sys/class/lge_power/lge_cc/fake_hvdcp_mode 1
+on property:persist.vendor.lge.service.hvdcpfakemode=0
+   write /sys/class/lge_power/lge_cc/fake_hvdcp_mode 0
+
+# llk mode
+on property:persist.vendor.lge.sys.store_demo_enabled=1
+   write /sys/class/lge_power/lge_sm/store_demo_enabled 1
+on property:persist.vendor.lge.sys.store_demo_enabled=0
+   write /sys/class/lge_power/lge_sm/store_demo_enabled 0
+
+# llk mode for google natvie
+on property:sys.retaildemo.enabled=1
+   write /sys/class/lge_power/lge_sm/store_demo_enabled 1
+on property:sys.retaildemo.enabled=0
+   write /sys/class/lge_power/lge_sm/store_demo_enabled 0
+
+
+on chargerlogo
+   start vendor.hvdcp_opti
+
+# chargerlogo
+on chargerlogo
+   trigger early-fs
+   trigger fs
+   trigger post-fs
+   trigger late-fs
+   trigger post-fs-data
+   trigger chargerlogo_exec
+
+on chargerlogo_exec
+   trigger chargerlogo_after
+
+on chargerlogo_exec
+   stop bootanim
+   write /sys/class/lge_power/lge_cc/otp_enable 1
+   write /sys/class/android_usb/android0/enable 0
+   write /sys/class/android_usb/android0/idVendor 1004
+   write /sys/class/android_usb/android0/idProduct 6300
+   write /sys/class/android_usb/android0/bDeviceClass 0
+   write /sys/class/android_usb/android0/bDeviceSubClass 0
+   write /sys/class/android_usb/android0/bDeviceProtocol 0
+   write /sys/class/android_usb/android0/functions charge_only
+   write /sys/class/android_usb/android0/enable 1
+   write /mnt/vendor/persist-lg/chargerlogo/autoboot_nosound 0
+   chmod 0666 /mnt/vendor/persist-lg/chargerlogo/autoboot_nosound
+
+# Start charger_monitor on chargerlogo
+   chown root system /sys/module/qpnp_charger/parameters/charger_monitor
+   chown root system /sys/module/qpnp_charger/parameters/ext_ovp_isns_online
+   chown root system /sys/module/qpnp_charger/parameters/ext_ovp_isns_present
+   chown root system /sys/module/qpnp_charger/parameters/ext_ovp_isns_r
+   chown root system /sys/module/qpnp_charger/parameters/ext_ovp_isns_ua
+   chown root system /sys/module/qpnp_charger/parameters/ext_ovp_present
+   chown root system /sys/class/power_supply/battery/input_current_max
+   chown root system /sys/class/power_supply/battery/input_current_trim
+   chown root system /sys/class/power_supply/battery/voltage_min
+   chown root system /sys/class/power_supply/battery/input_current_settled
+   chmod 0664 /sys/module/qpnp_charger/parameters/charger_monitor
+   chmod 0644 /sys/module/qpnp_charger/parameters/ext_ovp_isns_online
+   chmod 0644 /sys/module/qpnp_charger/parameters/ext_ovp_isns_present
+   chmod 0644 /sys/module/qpnp_charger/parameters/ext_ovp_isns_r
+   chmod 0644 /sys/module/qpnp_charger/parameters/ext_ovp_isns_ua
+   chmod 0644 /sys/module/qpnp_charger/parameters/ext_ovp_present
+   chmod 0664 /sys/class/power_supply/battery/input_current_max
+   chmod 0664 /sys/class/power_supply/battery/input_current_trim
+   chmod 0664 /sys/class/power_supply/battery/voltage_min
+   chmod 0664 /sys/class/power_supply/battery/input_current_settled
+   chmod 644 /data/logger/qni_log
+   chmod 644 /vendor/power/qna_log
+   chmod 644 /vendor/power/qni_a_data
+   chmod 644 /vendor/power/qni_b_data
+   start vendor.qni
+
+   mount configfs none /config
+   mkdir /config/usb_gadget/g1 0770 shell shell
+   mkdir /config/usb_gadget/g1/strings/0x409 0770 shell shell
+   write /config/usb_gadget/g1/bcdUSB 0x0200
+   write /config/usb_gadget/g1/os_desc/use 1
+   write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
+   write /config/usb_gadget/g1/strings/0x409/manufacturer "LGE"
+   write /config/usb_gadget/g1/strings/0x409/product "LGE"
+   mkdir /config/usb_gadget/g1/functions/hid.charge
+   mkdir /config/usb_gadget/g1/configs/b.1 0770 shell shell
+   mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0770 shell shell
+   write /config/usb_gadget/g1/os_desc/b_vendor_code 0x1
+   write /config/usb_gadget/g1/os_desc/qw_sign "MSFT100"
+   symlink /config/usb_gadget/g1/configs/b.1 /config/usb_gadget/g1/os_desc/b.1
+   write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "charge"
+   rm /config/usb_gadget/g1/configs/b.1/f1
+   rm /config/usb_gadget/g1/configs/b.1/f2
+   rm /config/usb_gadget/g1/configs/b.1/f3
+   rm /config/usb_gadget/g1/configs/b.1/f4
+   rm /config/usb_gadget/g1/configs/b.1/f5
+   rm /config/usb_gadget/g1/configs/b.2/f1
+   rm /config/usb_gadget/g1/configs/b.2/f2
+   rm /config/usb_gadget/g1/configs/b.2/f3
+   rm /config/usb_gadget/g1/configs/b.2/f4
+   rm /config/usb_gadget/g1/configs/b.2/f5
+   rm /config/usb_gadget/g1/configs/b.2/strings/0x409/configuration
+   rmdir /config/usb_gadget/g1/configs/b.2/strings/0x409
+   rmdir /config/usb_gadget/g1/configs/b.2
+   write /config/usb_gadget/g1/idVendor 0x1004
+   write /config/usb_gadget/g1/idProduct 0x6300
+   write /config/usb_gadget/g1/bDeviceClass 0
+   write /config/usb_gadget/g1/bDeviceSubClass 0
+   write /config/usb_gadget/g1/bDeviceProtocol 0
+   symlink /config/usb_gadget/g1/functions/hid.charge /config/usb_gadget/g1/configs/b.1/f1
+   write /config/usb_gadget/g1/UDC "a800000.dwc3"
+
+on chargerlogo_after
+   start log-kernel
+   exec u:r:chargerlogo:s0 -- /vendor/bin/chargerlogo
+   trigger chargerlogo_after
+
+#Power_BSP, thermal senario change about LCD brightness
+on post-fs-data
+   chown system system /sys/class/leds/lcd-backlight/thermald_status
+   chmod 0644 /sys/class/leds/lcd-backlight/thermald_status
+
+# fuel gauge dumper for debug
+service vendor.fg-dump /vendor/bin/sh /vendor/bin/fg_dump.sh 10 /data/logger/fg.log
+   user root
+   group root system
+   class main
+   disabled
+   oneshot
+
+on property:persist.vendor.lge.service.fg.enable=0
+   stop vendor.fg-dump
+on property:persist.vendor.lge.service.fg.enable=1
+   start vendor.fg-dump
+on property:persist.vendor.lge.service.fg.enable=2
+   start vendor.fg-dump
+on property:persist.vendor.lge.service.fg.enable=3
+   start vendor.fg-dump
+on property:persist.vendor.lge.service.fg.enable=4
+   start vendor.fg-dump
+on property:persist.vendor.lge.service.fg.enable=5
+   restart vendor.fg-dump
+
+on property:sys.shutdown.requested=*
+   stop vendor.qni
+   stop vendor.qni_log
+   write /sys/class/qnovo/qnovo_enable 0
+
+on property:persist.vendor.lge.service.chg_mode=LGE
+   stop vendor.qni
+   stop vendor.qni_log
+   write /sys/class/qnovo/qnovo_enable 0
+
+on property:persist.vendor.lge.service.chg_mode=LGE,QNOVO && property:persist.vendor.lge.service.kernel.enable=0
+   stop vendor.qni_log
+   stop vendor.qni
+
+on property:persist.vendor.lge.service.chg_mode=QNOVO && property:persist.vendor.lge.service.kernel.enable=0
+   stop vendor.qni_log
+   stop vendor.qni
+
+on property:persist.vendor.lge.service.chg_mode=LGE,QNOVO && property:persist.vendor.lge.service.kernel.enable=1
+   stop vendor.qni
+   stop vendor.qni_log
+on property:persist.vendor.lge.service.chg_mode=LGE,QNOVO && property:persist.vendor.lge.service.kernel.enable=2
+   stop vendor.qni
+   stop vendor.qni_log
+on property:persist.vendor.lge.service.chg_mode=LGE,QNOVO && property:persist.vendor.lge.service.kernel.enable=3
+   stop vendor.qni
+   stop vendor.qni_log
+on property:persist.vendor.lge.service.chg_mode=LGE,QNOVO && property:persist.vendor.lge.service.kernel.enable=4
+   stop vendor.qni
+   stop vendor.qni_log
+on property:persist.vendor.lge.service.chg_mode=LGE,QNOVO && property:persist.vendor.lge.service.kernel.enable=5
+   stop vendor.qni
+   stop vendor.qni_log
+on property:persist.vendor.lge.service.chg_mode=LGE,QNOVO && property:persist.vendor.lge.service.kernel.enable=6
+   stop vendor.qni
+   stop vendor.qni_log
+
+on property:persist.vendor.lge.service.chg_mode=QNOVO && property:persist.vendor.lge.service.kernel.enable=1
+   stop vendor.qni
+   stop vendor.qni_log
+on property:persist.vendor.lge.service.chg_mode=QNOVO && property:persist.vendor.lge.service.kernel.enable=2
+   stop vendor.qni
+   stop vendor.qni_log
+on property:persist.vendor.lge.service.chg_mode=QNOVO && property:persist.vendor.lge.service.kernel.enable=3
+   stop vendor.qni
+   stop vendor.qni_log
+on property:persist.vendor.lge.service.chg_mode=QNOVO && property:persist.vendor.lge.service.kernel.enable=4
+   stop vendor.qni
+   stop vendor.qni_log
+on property:persist.vendor.lge.service.chg_mode=QNOVO && property:persist.vendor.lge.service.kernel.enable=5
+   stop vendor.qni
+   stop vendor.qni_log
+on property:persist.vendor.lge.service.chg_mode=QNOVO && property:persist.vendor.lge.service.kernel.enable=6
+   stop vendor.qni
+   stop vendor.qni_log
+
+service vendor.qni /system/vendor/bin/qni -d /vendor/power -l /data/logger -o 2
+   socket qnibsd stream 660 qni system
+   disabled
+
+service vendor.qni_log /system/vendor/bin/qni -d /vendor/power -l /data/logger -o 6
+   socket qnibsd stream 660 qni system
+   disabled
+
+# LGE gbmd
+service vendor.gbmd /vendor/bin/gbmd
+   class main
+   socket gbm-client stream 660 system system
+   user system
+   group system
+
+# LGE prmd
+service vendor.prmd /vendor/bin/prmd
+   class main
+   socket prm-client stream 660 system system
+   user system
+   group system
+
+# LGE triton
+service vendor.triton /vendor/bin/triton
+   class main
+   user root
+   group system
+   socket triton-client stream 660 system system
+   disabled
+
+
+# LG Hiddenmenu smpl_count service
+service vendor.smpl_count /vendor/bin/smpl_count
+   class main
+   user root
+   oneshot
+
+on property:sys.boot_completed=1
+   start vendor.triton
+   write /sys/devices/system/cpu/triton/debug 16
+   write /sys/devices/system/cpu/triton/enable 1
+   write /sys/devices/system/cpu/triton/enforce 0
+   write /sys/devices/system/cpu/triton/cur_policy 0
+   chown system system /sys/devices/system/cpu/triton/enable
+   chmod 664 /sys/devices/system/cpu/triton/enable
+   chmod 664 /sys/devices/system/cpu/triton/aevents
+   chmod 664 /sys/devices/system/cpu/triton/bevents
+   chown system system /sys/devices/system/cpu/triton/cur_policy
+   chmod 664 /sys/devices/system/cpu/triton/cur_policy
+   chmod 664 /sys/devices/system/cpu/triton/debug
+
+# image_enhance_set
+   chown system system /sys/class/panel/img_tune/image_enhance_set
+   chmod 664 /sys/class/panel/img_tune/image_enhance_set
+
+on boot
+   chown system system /sys/devices/system/cpu/triton/enable
+   chmod 644 /sys/devices/system/cpu/triton/enable
+
+on boot
+# setup permissions for fb0 related nodes
+   chown system system /sys/class/graphics/fb0/mdp/vfps
+   chmod 664 /sys/class/graphics/fb0/mdp/vfps
+   chown system system /sys/class/graphics/fb0/mdp/vfps_fcnt
+   chmod 664 /sys/class/graphics/fb0/mdp/vfps_fcnt
+   chown system system /sys/class/graphics/fb0/mdp/vfps_ratio
+   chmod 664 /sys/class/graphics/fb0/mdp/vfps_ratio
+   chown system system /sys/class/graphics/fb0/fbcn_en
+   chmod 644 /sys/class/graphics/fb0/fbcn_en
+   chown system system /sys/class/graphics/fb0/fbcn_interval
+   chmod 644 /sys/class/graphics/fb0/fbcn_interval
+   chown system system /sys/class/graphics/fb0/fbcn_i
+   chmod 644 /sys/class/graphics/fb0/fbcn_i

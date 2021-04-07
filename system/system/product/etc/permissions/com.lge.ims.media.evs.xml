@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Support for EVS (Enhanced Voice Service) -->
+<permissions>
+    <feature name="com.lge.ims.media.evs" />
+</permissions>

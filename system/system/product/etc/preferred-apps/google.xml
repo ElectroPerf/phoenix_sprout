@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<preferred-activities>
+<!-- Delete all because -->
+<!-- http://mlm.lge.com/di/browse/HPLUS-5829 -->
+
+<!-- CalendarGoogle default app setting -->
+<!-- ORD-8202 -->
+    <item name="com.google.android.calendar/com.android.calendar.AllInOneActivity">
+        <filter>
+            <action name="android.intent.action.MAIN"/>
+            <cat name="android.intent.category.APP_CALENDAR"/>
+            <cat name="android.intent.category.DEFAULT"/>
+        </filter>
+    </item>
+    <item name="com.google.android.apps.docs.editors.sheets/com.google.android.apps.docs.editors.trix.quicksheet.QuickSheetDocumentOpenerActivityAlias">
+        <filter>
+            <action name="android.intent.action.EDIT" />
+            <cat name="android.intent.category.DEFAULT" />
+            <type name="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+            <type name="application/vnd.ms-excel.sheet.macroenabled.12" />
+            <type name="application/vnd.ms-excel" />
+            <type name="application/vnd.ms-excel.addin.macroenabled.12" />
+            <type name="application/vnd.ms-excel.template.macroenabled.12" />
+            <type name="application/vnd.openxmlformats-officedocument.spreadsheetml.template" />
+            <type name="application/x-msexcel" />
+        </filter>
+    </item>
+    <item name="com.google.android.apps.docs.editors.docs/com.google.android.apps.docs.editors.kix.quickword.QuickWordDocumentOpenerActivityAlias">
+      <filter>
+            <action name="android.intent.action.EDIT" />
+            <cat name="android.intent.category.DEFAULT" />
+            <type name="application/vnd.ms-word" />
+            <type name="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+            <type name="application/vnd.ms-word.document.macroenabled.12" />
+            <type name="application/msword" />
+            <type name="application/vnd.ms-word.template.macroenabled.12" />
+            <type name="application/vnd.openxmlformats-officedocument.wordprocessingml.template" />
+            <type name="application/x-msword" />
+      </filter>
+    </item>
+    <item name="com.google.android.apps.docs.editors.slides/com.google.android.apps.docs.editors.kix.quickword.QuickWordDocumentOpenerActivityAlias">
+      <filter>
+            <action name="android.intent.action.EDIT" />
+            <cat name="android.intent.category.DEFAULT" />
+            <type name="application/vnd.openxmlformats-officedocument.presentationml.presentation" />
+            <type name="application/vnd.ms-powerpoint" />
+            <type name="application/vnd.openxmlformats-officedocument.presentationml.template" />
+            <type name="application/vnd.ms-powerpoint.presentation.macroenabled.12" />
+            <type name="application/vnd.openxmlformats-officedocument.presentationml.slideshow" />
+            <type name="application/vnd.ms-powerpoint.slideshow.macroenabled.12" />
+            <type name="application/x-mspowerpoint" />
+
+      </filter>
+    </item>
+</preferred-activities>

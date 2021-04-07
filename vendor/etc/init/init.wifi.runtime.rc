@@ -1,0 +1,16 @@
+#Wi-Fi Runtime
+
+on late-fs
+    start vendor.wlan_runtime
+
+on property:ro.boot.vendor.lge.sku_carrier=*
+     exec u:r:wlan_runtime:s0 system system wifi -- /vendor/bin/wifi_runtime_conf.sh --sku
+
+on property:vendor.lge.wlan.runtime=*
+     exec u:r:wlan_runtime:s0 system system wifi -- /vendor/bin/wifi_runtime_conf.sh --runtimeprop
+
+service vendor.wlan_runtime /vendor/bin/wifi_runtime_conf.sh --post
+     user root
+     group root wifi
+     disabled
+     oneshot
