@@ -174,8 +174,8 @@ bootimg/ramdisk/system/lib64/libbootloader_message.so
 bootimg/ramdisk/system/lib64/libcgrouprc.so
 bootimg/ramdisk/system/lib64/libcrypto.so
 bootimg/ramdisk/system/lib64/libcrypto_utils.so
-bootimg/ramdisk/system/lib64/libc++.so
 bootimg/ramdisk/system/lib64/libc.so
+bootimg/ramdisk/system/lib64/libc++.so
 bootimg/ramdisk/system/lib64/libcutils.so
 bootimg/ramdisk/system/lib64/libdl.so
 bootimg/ramdisk/system/lib64/libext2_blkid.so
@@ -218,7 +218,6 @@ bootimg/ramdisk/system/lib64/libz.so
 bootimg/ramdisk/vendor_file_contexts
 bootimg/ramdisk/vendor_property_contexts
 bootimg/ramdisk/verity_key
-ikconfig
 kallsyms.txt
 modem/image/adsp.b00
 modem/image/adsp.b01
@@ -562,8 +561,8 @@ modem/image/widevine.b06
 modem/image/widevine.b07
 modem/image/widevine.mdt
 modem/image/wil6210.brd
-modem/image/wil6210.fw
 modem/image/wil6210_.fw
+modem/image/wil6210.fw
 modem/image/wlanmdsp.mbn
 modem/verinfo/ver_info.txt
 system/bugreports
@@ -3179,8 +3178,8 @@ system/system/lib64/libcredstore_aidl.so
 system/system/lib64/libcrypto.so
 system/system/lib64/libcrypto_utils.so
 system/system/lib64/libc_scudo.so
-system/system/lib64/libc++.so
 system/system/lib64/libc.so
+system/system/lib64/libc++.so
 system/system/lib64/libcups.so
 system/system/lib64/libcurl.so
 system/system/lib64/libcutils.so
@@ -3647,8 +3646,8 @@ system/system/lib/libcodec2_vndk.so
 system/system/lib/libcompiler_rt.so
 system/system/lib/libcrypto.so
 system/system/lib/libcrypto_utils.so
-system/system/lib/libc++.so
 system/system/lib/libc.so
+system/system/lib/libc++.so
 system/system/lib/libcurl.so
 system/system/lib/libcutils.so
 system/system/lib/libdataloader.so
